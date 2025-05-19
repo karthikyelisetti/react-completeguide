@@ -21,7 +21,7 @@ const content = [
   ],
   [
     "React is extremely popular",
-    "Hooks (e.g., useEffect()) & Dynamic renderingß",
+    "Hooks (e.g., useEffect()) & Dynamic rendering",
     "React Native (build native mobile apps with React)"
   ]
 ];
