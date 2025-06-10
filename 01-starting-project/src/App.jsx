@@ -1,3 +1,4 @@
+import coreImage from './assets/react-core-concepts.png'; // Importing the main image for the header.
 
 // Defining a array of strings to dynamically update the content.
 const reactDescription = ['Fundamental', 'Crucial', 'Core'];
@@ -12,7 +13,7 @@ const description = reactDescription[genRandomInt(2)];
 function Header() {
   return (
     <header>
-      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+      <img src={coreImage} alt="Stylized atom" /> {/* Displaying the main image in the header */}
       <h1>React Essentials</h1>
       <p>
         {description} React concepts you will need for almost any app you are
