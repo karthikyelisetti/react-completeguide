@@ -1,39 +1,8 @@
-import coreImage from './assets/react-core-concepts.png'; // Importing the main image for the header.
-import componentImage from "./assets/components.png"; // Importing an image for the core concept component.
+
+import Header from './components/Header/Header.jsx'; // Importing the Header component from the components directory.
+import CoreConcept from './components/CoreConcept/CoreConcept.jsx'; // Importing the CoreConcept component from the components directory.
 import { CORE_CONCEPTS } from './data.js'; // Importing an array of core concepts from a separate data file.
 
-// Defining a array of strings to dynamically update the content.
-const reactDescription = ['Fundamental', 'Crucial', 'Core'];
-function  genRandomInt(max) {
-  // This function generates a random integer between 0 and max (exclusive).
-  return Math.floor(Math.random() * (max + 1));
-}
-
-const description = reactDescription[genRandomInt(2)];
-
-// This is a React component that serves as the main entry point for the application.
-function Header() {
-  return (
-    <header>
-      <img src={coreImage} alt="Stylized atom" /> {/* Displaying the main image in the header */}
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept(props) {
-  return (
-    <li>
-      <img src={props.image} alt={props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-}
 
 function CoreConceptOD({image, title, description}) { // This is an alternative way to define the CoreConcept component using object destructuring.
   // This allows us to directly access the properties of the props object.
