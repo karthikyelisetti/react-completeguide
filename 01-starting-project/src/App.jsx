@@ -21,6 +21,14 @@ import TabButton from './components/TabButton/TabButton.jsx'; // Importing the T
 //   );
 // }
 
+let tabContent;
+
+function handleSelect(selectedTab) {
+  // This function will handle the selection of a tab button.
+  tabContent = selectedTab;
+  console.log(tabContent);
+}
+
 
 function App() {
   return (
@@ -39,11 +47,12 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Component</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={ () => {handleSelect("Component")} }>Component</TabButton>
+            <TabButton onSelect={ () => {handleSelect("JSX")} }>JSX</TabButton>
+            <TabButton onSelect={ () => {handleSelect("Props")} }>Props</TabButton>
+            <TabButton onSelect={ () => {handleSelect("State")} }>State</TabButton>
           </menu>
+          {tabContent}
         </section>
       </main>
     </div>
