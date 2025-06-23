@@ -1,4 +1,5 @@
 
+import { useState } from 'react'; // Importing useState hook from React to manage state in functional components.
 import Header from './components/Header/Header.jsx'; // Importing the Header component from the components directory.
 import CoreConcept from './components/CoreConcept/CoreConcept.jsx'; // Importing the CoreConcept component from the components directory.
 import { CORE_CONCEPTS } from './data.js'; // Importing an array of core concepts from a separate data file.
@@ -21,16 +22,17 @@ import TabButton from './components/TabButton/TabButton.jsx'; // Importing the T
 //   );
 // }
 
-let tabContent;
-
-function handleSelect(selectedTab) {
-  // This function will handle the selection of a tab button.
-  tabContent = selectedTab;
-  console.log(tabContent);
-}
-
-
 function App() {
+  
+  // Using useState to manage the state of the selected tab. The initial state is set to "Component".
+  let [selectedContent, setSelectedContent] = useState('Please select a topic to learn more about React!'); // Initial state is a string prompting the user to select a topic.
+
+  function handleSelect(selectedTab) {
+    // This function will handle the selection of a tab button.
+    setSelectedContent(selectedTab); // Update the state with the selected tab.
+    // console.log(selectedContent);
+  }
+
   return (
     <div>
       <Header />
@@ -52,7 +54,7 @@ function App() {
             <TabButton onSelect={ () => {handleSelect("Props")} }>Props</TabButton>
             <TabButton onSelect={ () => {handleSelect("State")} }>State</TabButton>
           </menu>
-          {tabContent}
+          {selectedContent}
         </section>
       </main>
     </div>
