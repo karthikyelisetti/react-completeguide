@@ -1,10 +1,9 @@
-
-import { useState } from 'react'; // Importing useState hook from React to manage state in functional components.
-import Header from './components/Header/Header.jsx'; // Importing the Header component from the components directory.
-import CoreConcept from './components/CoreConcept/CoreConcept.jsx'; // Importing the CoreConcept component from the components directory.
-import { CORE_CONCEPTS } from './data.js'; // Importing an array of core concepts from a separate data file.
-import TabButton from './components/TabButton/TabButton.jsx'; // Importing the TabButton component from the components directory.
-
+import { useState } from "react"; // Importing useState hook from React to manage state in functional components.
+import Header from "./components/Header/Header.jsx"; // Importing the Header component from the components directory.
+import CoreConcept from "./components/CoreConcept/CoreConcept.jsx"; // Importing the CoreConcept component from the components directory.
+import { CORE_CONCEPTS } from "./data.js"; // Importing an array of core concepts from a separate data file.
+import TabButton from "./components/TabButton/TabButton.jsx"; // Importing the TabButton component from the components directory.
+import { EXAMPLES } from "./data.js";
 
 // function CoreConceptOD({image, title, description}) { // This is an alternative way to define the CoreConcept component using object destructuring.
 //   // This allows us to directly access the properties of the props object.
@@ -23,9 +22,8 @@ import TabButton from './components/TabButton/TabButton.jsx'; // Importing the T
 // }
 
 function App() {
-  
   // Using useState to manage the state of the selected tab. The initial state is set to "Component".
-  let [selectedContent, setSelectedContent] = useState('Please select a topic to learn more about React!'); // Initial state is a string prompting the user to select a topic.
+  let [selectedContent, setSelectedContent] = useState(); // Initial state is a string prompting the user to select a topic.
 
   function handleSelect(selectedTab) {
     // This function will handle the selection of a tab button.
@@ -37,24 +35,61 @@ function App() {
     <div>
       <Header />
       <main>
-        <section id='core-concepts'>
+        <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept {...CORE_CONCEPTS[0]} /> {/* Using spread operator to pass all properties of the first concept when all the key names are similar */}
+            <CoreConcept {...CORE_CONCEPTS[0]} />{" "}
+            {/* Using spread operator to pass all properties of the first concept when all the key names are similar */}
             <CoreConcept {...CORE_CONCEPTS[1]} />
             <CoreConcept {...CORE_CONCEPTS[2]} />
-            <CoreConcept title={CORE_CONCEPTS[3].title} description={CORE_CONCEPTS[3].description} image={CORE_CONCEPTS[3].image}/>
+            <CoreConcept
+              title={CORE_CONCEPTS[3].title}
+              description={CORE_CONCEPTS[3].description}
+              image={CORE_CONCEPTS[3].image}
+            />
           </ul>
         </section>
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={ () => {handleSelect("Component")} }>Component</TabButton>
-            <TabButton onSelect={ () => {handleSelect("JSX")} }>JSX</TabButton>
-            <TabButton onSelect={ () => {handleSelect("Props")} }>Props</TabButton>
-            <TabButton onSelect={ () => {handleSelect("State")} }>State</TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("components");
+              }}
+            >
+              Component
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("jsx");
+              }}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("props");
+              }}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("state");
+              }}
+            >
+              State
+            </TabButton>
           </menu>
-          {selectedContent}
+          {!selectedContent ? (
+            <p>Please select a topic.</p>
+          ) : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedContent].title}</h3>
+              <p>{EXAMPLES[selectedContent].description}</p>
+              <code>{EXAMPLES[selectedContent].code}</code>
+            </div>
+          )}
         </section>
       </main>
     </div>
