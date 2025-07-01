@@ -1,5 +1,6 @@
 
 import { EXAMPLES } from "../../data.js"; // Importing an object containing example data from a separate data file.
+import Section from "../Section.jsx";
 import TabButton from "../TabButton/TabButton.jsx"; // Importing the TabButton component from the components directory.
 import { useState } from "react"; // Importing useState hook from React to manage state in functional components.
 
@@ -15,7 +16,7 @@ function Examples() {
   }
     return (
         <>
-            <section id="examples">
+            <Section id="examples">
                 <h2>Examples</h2>
                 <menu>
                     <TabButton
@@ -60,7 +61,7 @@ function Examples() {
                     <code>{EXAMPLES[selectedContent].code}</code>
                     </div>
                 )}
-            </section>
+            </Section>
         </>
     )
 }
