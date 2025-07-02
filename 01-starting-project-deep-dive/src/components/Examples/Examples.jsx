@@ -3,55 +3,60 @@ import { EXAMPLES } from "../../data.js"; // Importing an object containing exam
 import Section from "../Section.jsx";
 import TabButton from "../TabButton/TabButton.jsx"; // Importing the TabButton component from the components directory.
 import { useState } from "react"; // Importing useState hook from React to manage state in functional components.
+import Tabs from "../TabButton/Tabs.jsx";
 
 function Examples() {
 
     // Using useState to manage the state of the selected tab. The initial state is set to "Component".
-  const [selectedContent, setSelectedContent] = useState(); // Initial state is a string prompting the user to select a topic.
+    const [selectedContent, setSelectedContent] = useState(); // Initial state is a string prompting the user to select a topic.
 
-  function handleSelect(selectedTab) {
-    // This function will handle the selection of a tab button.
-    setSelectedContent(selectedTab); // Update the state with the selected tab.
-    // console.log(selectedContent);
-  }
+    function handleSelect(selectedTab) {
+        // This function will handle the selection of a tab button.
+        setSelectedContent(selectedTab); // Update the state with the selected tab.
+        // console.log(selectedContent);
+    }
+
     return (
         <>
-            <Section id="examples">
-                <h2>Examples</h2>
-                <menu>
-                    <TabButton
-                    isSelected={selectedContent === "components"}
-                    onSelect={() => {
-                        handleSelect("components");
-                    }}
-                    >
-                    Component
-                    </TabButton>
-                    <TabButton
-                    isSelected={selectedContent === "jsx"}
-                    onSelect={() => {
-                        handleSelect("jsx");
-                    }}
-                    >
-                    JSX
-                    </TabButton>
-                    <TabButton
-                    isSelected={selectedContent === "props"}
-                    onSelect={() => {
-                        handleSelect("props");
-                    }}
-                    >
-                    Props
-                    </TabButton>
-                    <TabButton
-                    isSelected={selectedContent === "state"}
-                    onSelect={() => {
-                        handleSelect("state");
-                    }}
-                    >
-                    State
-                    </TabButton>
-                </menu>
+            <Section id="examples" title="Examples">
+                <Tabs
+                    ButtonContainer="menu"
+                    buttons={
+                        <>
+                            <TabButton
+                            isSelected={selectedContent === "components"}
+                            onSelect={() => {
+                                handleSelect("components");
+                            }}
+                            >
+                            Component
+                            </TabButton>
+                            <TabButton
+                            isSelected={selectedContent === "jsx"}
+                            onSelect={() => {
+                                handleSelect("jsx");
+                            }}
+                            >
+                            JSX
+                            </TabButton>
+                            <TabButton
+                            isSelected={selectedContent === "props"}
+                            onSelect={() => {
+                                handleSelect("props");
+                            }}
+                            >
+                            Props
+                            </TabButton>
+                            <TabButton
+                            isSelected={selectedContent === "state"}
+                            onSelect={() => {
+                                handleSelect("state");
+                            }}
+                            >
+                            State
+                            </TabButton>
+                        </>
+                }/>
                 {!selectedContent ? (
                     <p>Please select a topic.</p>
                 ) : (
