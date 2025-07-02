@@ -6,7 +6,7 @@ export default function Button({children, mode, Icon}) {
  // Also wrap the children prop with a <span>
     return (
         <>
-            {/* <span className="button-icon">{Icon}</span> */}
+            <span className="button-icon">{Icon}</span>
             <span className={mode ? mode : "filled-button"}>{children}</span>
         </>
     );
