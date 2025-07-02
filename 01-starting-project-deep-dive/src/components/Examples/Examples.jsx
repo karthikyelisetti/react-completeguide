@@ -20,7 +20,7 @@ function Examples() {
         <>
             <Section id="examples" title="Examples">
                 <Tabs
-                    ButtonContainer="menu"
+                    // ButtonContainer="menu"
                     buttons={
                         <>
                             <TabButton
